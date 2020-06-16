@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -12,11 +12,16 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="#crash"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            event.myUndefinedFunction();
+          }}
         >
-          Learn React
+          Crash me
         </a>
       </header>
     </div>
