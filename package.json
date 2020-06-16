@@ -3,20 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@sentry/apm": "^5.15.5",
-    "@sentry/browser": "^5.15.5",
+    "@sentry/apm": "^5.17.0",
+    "@sentry/browser": "^5.17.0",
+    "@sentry/integrations": "^5.17.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.10",
+    "prettier": "^2.0.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pretty": "prettier --write 'src/**/*.{js,jsx,json,css,md}' '*.{js,jsx,json,css,md}'"
   },
   "eslintConfig": {
     "extends": "react-app"

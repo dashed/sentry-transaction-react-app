@@ -9,32 +9,32 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 Sentry.init({
-  // team-plan org
-  dsn:
-    "https://295c792734534609871011dc4cc514a9@o225412.ingest.sentry.io/5209915",
-
-  // dsn: "http://dc8e277ade4d4a80a9cec7737a579fd5@dev.getsentry.net:8000/11",
-  // dsn: "http://4fb9e39cd19e464b8e3dafecfd802484@dev.getsentry.net:8000/10",
-  // dsn: 'https://7937ea21845a462fa084fd2e1c0096b9@sentry.io/1876810',
-  // dsn: 'http://4fb9e39cd19e464b8e3dafecfd802484@dev.getsentry.net:8000/10',
+  dsn: "http://8b47cca89c884eda825d9c2472387f99@dev.getsentry.net:8000/13",
 
   tracesSampleRate: 1.0,
-  integrations: [new ApmIntegrations.Tracing()],
+  integrations: [
+    new ApmIntegrations.Tracing({
+      debug: {
+        spanDebugTimingInfo: true,
+        writeAsBreadcrumbs: true,
+      },
+    }),
+  ],
 
-  beforeSend(event, hint) {
-    // Check if it is an exception, and if so, show the report dialog
-    if (event.exception) {
-      Sentry.showReportDialog({
-        eventId: event.event_id,
-        title: "<strong>hello</strong>",
-        errorFormEntry: "<img src=x onerror=alert(1)>XSS_1",
-        successMessage: "<img src=x onerror=alert(2)>XSS_2",
-        errorGeneric: "<img src=x onerror=alert(3)>XSS_3",
-      });
-    }
+  // beforeSend(event, hint) {
+  //   // Check if it is an exception, and if so, show the report dialog
+  //   if (event.exception) {
+  //     Sentry.showReportDialog({
+  //       eventId: event.event_id,
+  //       title: "<strong>hello</strong>",
+  //       errorFormEntry: "<img src=x onerror=alert(1)>XSS_1",
+  //       successMessage: "<img src=x onerror=alert(2)>XSS_2",
+  //       errorGeneric: "<img src=x onerror=alert(3)>XSS_3",
+  //     });
+  //   }
 
-    return event;
-  },
+  //   return event;
+  // },
 });
 
 ReactDOM.render(<App />, document.getElementById("root"));
