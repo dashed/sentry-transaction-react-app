@@ -9,7 +9,15 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 Sentry.init({
-  dsn: "http://8b47cca89c884eda825d9c2472387f99@dev.getsentry.net:8000/13",
+  // http://dev.getsentry.net:8000/free-plan-2/test-trace-react/getting-started/javascript-react/
+  // dsn: "http://75403a5614aa44a09fbff20f07d78eae@dev.getsentry.net:8000/14",
+
+  // sentry/free-plan/test-trace-react
+  dsn:
+    "https://e0b8bf87fe754732864263e79983ddaa@o408398.ingest.sentry.io/5280150",
+
+  // local/tracing-test-co/test-tracing-react
+  // dsn: "http://8b47cca89c884eda825d9c2472387f99@dev.getsentry.net:8000/13",
 
   tracesSampleRate: 1.0,
   integrations: [

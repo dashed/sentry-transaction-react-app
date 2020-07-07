@@ -1,4 +1,5 @@
 import React from "react";
+import * as Sentry from "@sentry/browser";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -58,7 +59,10 @@ function Home() {
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
-          event.myUndefinedFunction();
+          console.log("foooo");
+          Sentry.captureMessage("Something went wrong");
+
+          // event.myUndefinedFunction();
         }}
       >
         Crash me
